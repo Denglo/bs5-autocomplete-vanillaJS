@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title>Examples of autocomplete in bootstrap style</title>
+</head>
+<body class="bg-secondary">
+<form>
+    <div class="row mt-2">
+        <div class="col-4 col-lg-2 offset-1 offset-lg-2">
+            <input class="form-control-sm" id="form1" type="text">
+            <div class="position-absolute invisible" id="form1_complete"></div>
+        </div>
+        <div class="col-4 col-lg-2">
+            <p>Example 1 for an autocomplete in a small input field.</p>
+            <p>Starts at 3 inputed characters by deafault.</p>
+            <p>Returned list include first five results by default.</p>
+        </div>
+    </div>
+<br><br><br><br><br>
+</form>
+<form>
+    <div class="row mt-5">
+        <div class="col-4 col-lg-2 offset-1 offset-lg-2">
+            <input class="form-control" id="form2" type="text">
+            <div class="position-absolute invisible" id="form2_complete"></div>
+        </div>
+        <div class="col-4 col-lg-2">
+            <p>Example 2 for an autocomplete in a standard input field with optional parameters.</p>
+            <p>Starts at two inputed characters by set this option with param "start_at_letters=2" in function call.</p>
+            <p>Returned list includes first three results by set this option with param "count_results=3" in function call</p>
+        </div>
+    </div>
+</form>
+<script src="../autocomplete.js"></script>
+<script>
+    // Example 1
+    const autocomplete_example1 = ['Alfred', 'Alfons', 'Alf', 'Alfonso', 'Alfredo', 'Alfine'];
+    set_autocomplete('form1', 'form1_complete', autocomplete_example1);
+
+    // Example 2
+    const autocomplete_example2 = ['Stephanie', 'Estaphania', 'Johanna', 'Hans', 'Stephan', 'Stephania' ];
+    set_autocomplete('form2', 'form2_complete', autocomplete_example2, start_at_letters=2, count_results=3);
+</script>
+</body>
+</html>
