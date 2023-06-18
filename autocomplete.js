@@ -12,6 +12,7 @@
  * @return {[Undefined]} Nothing returned, only make autocomplete visible or invisble
  */
 
+
 function set_autocomplete(id_formfield, id_autocomplete_div, result_list, start_at_letters=3, count_results=5) {
     let input = document.getElementById(id_formfield);
     let autocomplete_div = document.getElementById(id_autocomplete_div);
@@ -21,7 +22,17 @@ function set_autocomplete(id_formfield, id_autocomplete_div, result_list, start_
             var res = autocomplete(result_list, characters);
             renderResults(res, characters, autocomplete_div, input, count_results);
             autocomplete_div.classList.remove('invisible');
-        }
+
+            // clear input field on lost focus if reult not in result list
+            input.onblur = function() {
+                setTimeout(function() {
+                    if (result_list.indexOf(input.value) == -1) {
+                        input.value = "";
+                        }
+                    autocomplete_div.classList.add("invisible");
+                    }, 200);
+                }
+            }
         else {
             autocomplete_div.classList.add("invisible");
             // delete all childs from result list
@@ -29,7 +40,7 @@ function set_autocomplete(id_formfield, id_autocomplete_div, result_list, start_
                 autocomplete_div.removeChild(autocomplete_div.firstChild);
             }
         }
-    };
+    }
 }
 
 
@@ -42,6 +53,7 @@ function autocomplete(item_list, search_string) {
     });
     return results
 }
+
 
 function renderResults(results, search, container, form_id, max_results) {
     // delete unordered list from previous search result
@@ -102,6 +114,7 @@ function renderResults(results, search, container, form_id, max_results) {
 
     }
 }
+
 
 // create span's with colored marked search strings
 function colored_result(string, search) {
