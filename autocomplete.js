@@ -6,7 +6,7 @@
  * Description : Add an autocomplete list to an input field with bootstrap style.
  * @param {[string]} id_formfield [ID from form element where an autocomplete list should added]
  * @param {[string]} id_autocomplete_div []
- * @param {Array]} result_list [Array of all possible search results]
+ * @param {[Array of strings]} result_list [Array of all possible search results] - you must create your own variable and API, look at ./Example/example.html
  * @param {[number]} start_at_letters [inputted string length at which autocomplete list should shown]
  * @param {[number]} count_results [number of max results]
  * @return {[Undefined]} Nothing returned, only make autocomplete visible or invisble
